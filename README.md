@@ -1,93 +1,91 @@
-# AI Customer Support Bot - Final Build
+# AI Customer Support Bot & Ticket Management System
 
-A FastAPI + React application for customer support, tickets, conversations, analytics, document ingestion, RAG-style retrieval, and optional Gemini responses.
+An AI-powered customer support platform built with **FastAPI, React, SQLite/PostgreSQL, and Gemini**.
 
-## Final project structure
+The system allows customers to interact with an AI support assistant, create and manage support tickets, maintain conversations, use browser-based voice support, and work with uploaded knowledge documents. Agents and administrators have role-based access to tickets, users, analytics, and support operations.
 
-```text
-chat_bot_ai_final/
-|-- backend/
-|   |-- app/
-|   |   |-- ai/
-|   |   |-- api/routes/
-|   |   |-- core/
-|   |   |-- models/
-|   |   |-- schemas/
-|   |   |-- services/
-|   |   |-- uploads/
-|   |   `-- main.py
-|   |-- tests/
-|   |-- .env.example
-|   |-- requirements.txt
-|   `-- Dockerfile
-|-- frontend/
-|   |-- public/
-|   |-- src/
-|   |-- .env.example
-|   |-- package.json
-|   |-- package-lock.json
-|   `-- vite.config.js
-|-- docker-compose.yml
-|-- .env.example
-|-- run_backend.bat
-|-- run_frontend.bat
-`-- README.md
-```
+## Features
 
-## Windows setup
+### Customer Support
+- AI-powered customer support chat
+- Conversation history
+- Create and manage support tickets
+- Ticket status and priority tracking
+- Customer account management
+- Browser-based voice support
 
-### 1. Backend
+### Agent & Admin
+- Agent support dashboard
+- Admin dashboard
+- User management
+- Ticket management
+- Support analytics
+- Role-based access control
 
-Open a terminal in `backend`:
+### AI & Documents
+- Gemini-based AI responses
+- Document upload and ingestion
+- Support for TXT, CSV, PDF, DOCX, and XLSX files
+- RAG-style document retrieval
+- AI responses using retrieved document context
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
-```
+## Tech Stack
 
-Copy `backend/.env.example` to `backend/.env`. The default database is SQLite, so PostgreSQL is not required for the basic local run.
+### Backend
+- Python
+- FastAPI
+- SQLAlchemy
+- SQLite for local development
+- PostgreSQL support
+- JWT authentication
+- Pydantic
+- Gemini API
+- PyPDF
+- python-docx
+- openpyxl
+- Pytest
 
-Start the API:
+### Frontend
+- React
+- Vite
+- React Router
+- Axios
+- Lucide React
+- Recharts
+- Sonner
 
-```powershell
-uvicorn app.main:app --reload
-```
-
-The API runs at `http://localhost:8000` and health check is `http://localhost:8000/health`.
-
-### 2. Frontend
-
-Open a second terminal in `frontend`:
-
-```powershell
-npm install
-npm run dev
-```
-
-Open the URL printed by Vite, normally `http://localhost:5173`.
-
-### 3. Gemini AI
-
-The application starts without a Gemini key. AI chat responses require `GEMINI_API_KEY` in `backend/.env`.
-
-### Seeded demo accounts
+## Project Architecture
 
 ```text
-Admin    admin@example.com       adm123
-Agent    agent@example.com       agt123
-Customer customer@example.com    password
-```
-
-Change these credentials for any non-demo deployment.
-
-## Verification completed
-
-- Backend Python compilation: passed.
-- Backend pytest suite: 14/14 passed.
-- Frontend ESLint: 0 errors, 0 warnings.
-- Frontend production build was not executed against the bundled archive dependencies because the original archive contained a Windows/incomplete `rolldown` native dependency tree. The final package intentionally excludes `node_modules`; run `npm install` on the target machine before `npm run build`.
-
-## Important deployment note
-
-Do not commit `.env` files, local SQLite databases, `node_modules`, or `dist` to Git. Use the `.env.example` files as templates.
+AI-Customer-Support-Bot-Ticket-management-system/
+│
+├── backend/
+│   ├── app/
+│   │   ├── ai/
+│   │   ├── api/
+│   │   │   └── routes/
+│   │   ├── core/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── services/
+│   │   └── main.py
+│   │
+│   ├── tests/
+│   ├── .env.example
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   ├── .env.example
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.js
+│
+├── docker-compose.yml
+├── .env.example
+├── run_backend.bat
+├── run_frontend.bat
+├── .gitignore
+└── README.md
