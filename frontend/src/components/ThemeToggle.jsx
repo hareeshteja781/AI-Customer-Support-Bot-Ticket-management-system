@@ -1,0 +1,17 @@
+import { useTheme } from '../context/ThemeContext.jsx';
+
+export default function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <button
+      type="button"
+      onClick={toggleTheme}
+      aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      className="theme-toggle"
+    >
+      {theme === 'dark' ? '☀️' : '🌙'}
+    </button>
+  );
+}
