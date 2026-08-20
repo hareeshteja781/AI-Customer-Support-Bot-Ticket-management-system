@@ -70,7 +70,9 @@ export default function LoginPage() {
       const data = await login(normalizedEmail, password);
 
       if (!data?.user) {
-        throw new Error('Login succeeded but user information was not returned.');
+        throw new Error(
+          'Login succeeded but user information was not returned.'
+        );
       }
 
       if (data.user.role === 'admin') {
@@ -178,9 +180,7 @@ export default function LoginPage() {
             className="primary-button"
             disabled={loading}
           >
-            <span>
-              {loading ? 'Signing in…' : 'Continue'}
-            </span>
+            <span>{loading ? 'Signing in…' : 'Continue'}</span>
 
             {!loading && <ArrowRight size={18} />}
           </button>
@@ -199,9 +199,7 @@ export default function LoginPage() {
             <div>
               <strong>Demo access</strong>
 
-              <span>
-                Use these credentials to test the platform.
-              </span>
+              <span>Use these credentials to test the platform.</span>
             </div>
           </div>
 

@@ -2583,3 +2583,225 @@ body,
 .panel-card .preview-list::-webkit-scrollbar-thumb:hover {
   background: rgba(100, 116, 139, 0.62);
 }
+
+/* =========================================================
+   LOGIN PAGE - ZOOM AND SCROLL FIX
+   Allows the login page to scroll naturally when browser
+   zoom increases or the viewport becomes smaller.
+   ========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+/* Login page itself */
+.auth-page {
+  position: relative;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto !important;
+
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start !important;
+
+  padding: 72px 24px 40px;
+
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+
+  box-sizing: border-box;
+}
+
+/* Login card */
+.auth-panel {
+  width: min(940px, 100%);
+  max-width: 100%;
+  height: auto !important;
+  min-height: 0;
+
+  flex: 0 0 auto;
+
+  box-sizing: border-box;
+}
+
+/* Current login panel size */
+.auth-panel-wider {
+  width: min(640px, 100%);
+  max-width: 640px;
+}
+
+/* Theme button */
+.auth-theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* Make sure text can wrap when zoomed */
+.auth-copy,
+.auth-copy h1,
+.auth-copy p,
+.auth-branding,
+.demo-box,
+.demo-header,
+.demo-credentials,
+.auth-footer {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* Prevent form controls from creating horizontal overflow */
+.auth-form,
+.form-group,
+.password-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.auth-form input,
+.auth-form textarea,
+.auth-form select,
+.password-wrapper input {
+  max-width: 100%;
+}
+
+/* Keep password eye button inside the field */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  padding-right: 60px;
+}
+
+.password-wrapper .password-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+
+  background: var(--surface-muted);
+  color: var(--text-primary);
+}
+
+.password-wrapper .password-toggle:hover {
+  transform: translateY(-50%);
+}
+
+/* Buttons should remain usable at high zoom */
+.auth-panel .primary-button,
+.auth-panel .secondary-button {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Demo credentials should wrap instead of overflowing */
+.demo-credentials {
+  min-width: 0;
+}
+
+.demo-credentials > div {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.demo-value {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* ---------------------------------------------------------
+   Tablet
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+  .auth-page {
+    padding: 68px 16px 32px;
+  }
+
+  .auth-panel,
+  .auth-panel-wider {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* ---------------------------------------------------------
+   Mobile / browser zoom
+   --------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 64px 12px 24px;
+  }
+
+  .auth-panel {
+    padding: 24px;
+    border-radius: 22px;
+  }
+
+  .auth-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .auth-panel .primary-button,
+  .auth-panel .secondary-button {
+    width: 100%;
+  }
+
+  .auth-theme-toggle {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+/* ---------------------------------------------------------
+   Very narrow screens / strong browser zoom
+   --------------------------------------------------------- */
+
+@media (max-width: 380px) {
+  .auth-page {
+    padding: 60px 8px 20px;
+  }
+
+  .auth-panel {
+    padding: 20px;
+    border-radius: 20px;
+  }
+}
