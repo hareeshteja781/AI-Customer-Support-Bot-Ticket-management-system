@@ -1,4 +1,4 @@
-# AI Customer Support Bot & Ticket Management System
+# AI Customer Support Bot with automated Ticket Management System
 
 An AI-powered customer support platform built with **FastAPI, React, SQLite/PostgreSQL, and Gemini**.
 
